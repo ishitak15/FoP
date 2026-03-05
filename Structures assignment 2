@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+// 1. Define the structure
+struct Student {
+    char name[50];
+    int roll_no;
+    float marks;
+};
+
+int main() {
+    // 2. Create a variable of type 'Student'
+    struct Student s1;
+
+    printf("===== Input Student Data =====\n");
+
+    // Using fgets for the name to allow spaces (e.g., "John Doe")
+    printf("Enter Full Name: ");
+    fgets(s1.name, sizeof(s1.name), stdin);
+    
+    // Removing the trailing newline character from fgets
+    for(int i = 0; i < 50; i++) {
+        if(s1.name[i] == '\n') {
+            s1.name[i] = '\0';
+            break;
+        }
+    }
+
+    printf("Enter Roll Number: ");
+    scanf("%d", &s1.roll_no);
+
+    printf("Enter Marks: ");
+    scanf("%f", &s1.marks);
+
+    // 3. Display the stored data
+    printf("\n===== Displaying Information =====\n");
+    printf("Student Name : %s\n", s1.name);
+    printf("Roll Number  : %d\n", s1.roll_no);
+    printf("Total Marks  : %.2f\n", s1.marks);
+    printf("==================================\n");
+
+    return 0;
+}
+
